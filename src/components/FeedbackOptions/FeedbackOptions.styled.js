@@ -14,12 +14,23 @@ export const ButtonFeedback = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: red;
+  background-color: white;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: #00CCCC;
+  :hover,
+  :focus {
+    background-color: ${key => {
+      switch (key.children) {
+        case 'good':
+          return 'green';
+        case 'neutral':
+          return 'orange';
+        case 'bad':
+          return 'red';
+        default:
+          return 'transparent';
+      }
+    }};
+    color: white;
   }
 `;
